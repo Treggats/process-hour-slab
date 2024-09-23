@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "dev": "npx tailwindcss -i ./resources/assets/main.css -o ./public/assets/main.css --watch",
+    "build": "npx tailwindcss -i ./resources/assets/main.css -o ./public/assets/main.css"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.1"
+  }
+}

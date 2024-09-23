@@ -1,0 +1,43 @@
+name: QA (tests)
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  run-qa:
+    name: Run QA
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          tools: composer:v2
+          coverage: none
+
+      - name: Install dependencies
+        run: |
+          composer update
+          yarn
+          yarn build
+
+      - name: List Installed Dependencies
+        run: composer show -D
+
+      - name: Setup .env
+        run: cp .env.example .env
+
+      - name: list routes
+        run: php ./tempest routes
+
+      - name: run QA checks
+        run: composer qa
