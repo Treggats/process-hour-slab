@@ -1,0 +1,16 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+use Tempest\Console\ConsoleApplication;
+
+try {
+    require_once __DIR__ . '/vendor/autoload.php';
+} catch (Throwable) {
+    require_once getcwd() . '/../autoload.php';
+}
+
+ConsoleApplication::boot()->run();
+
+exit;
