@@ -10,7 +10,8 @@
         "larapack/dd": "^1.1",
         "phpstan/phpstan": "^1.10",
         "friendsofphp/php-cs-fixer": "^3.21",
-        "phpunit/phpunit": "^11.3"
+        "phpunit/phpunit": "^11.3",
+        "laravel/pint": "^1.17"
     },
     "autoload": {
         "psr-4": {
@@ -30,7 +31,7 @@
     ],
     "scripts": {
         "qa": [
-            "vendor/bin/php-cs-fixer fix --no-ansi --quiet --allow-risky=yes",
+            "vendor/bin/pint --no-ansi --test",
             "vendor/bin/phpstan analyse --no-ansi --no-progress",
             "vendor/bin/phpunit --display-warnings --display-skipped --display-deprecations --display-errors --display-notices"
         ]
